@@ -14,3 +14,14 @@ cf oauth-token
 curl 'https://api.cf.eu10-004.hana.ondemand.com/v2/apps' -X GET -H 'authorization: bearer eY…'
 
 
+CLIENT CERTIFICATE AUTHENTICATION
+-----------------------------------------------------------------------------------------------
+openssl pkcs12 -export -out mysf.p12 -inkey private.pem -in public.pem
+curl 'sfapi.dest/odata/v2/User?%24top=1&%24format=json&%24select=userId,firstName,lastName'
+
+
+DEPLOY TO cf
+-----------------------------------------------------------------------------------------------
+cds add hana
+cds add xsuaa
+cds add mta

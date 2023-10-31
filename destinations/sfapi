@@ -1,0 +1,10 @@
+#KeyStorePassword=<< Existing password/certificate removed on export >>
+#
+#Tue Oct 31 04:04:42 UTC 2023
+URL=https\://api8sales.cert.successfactors.com
+Name=sfapi
+ProxyType=Internet
+Type=HTTP
+URL.headers.successfactors-companyid=<SF companyid>
+Authentication=ClientCertificateAuthentication
+KeyStoreLocation=SuccessFactorsPEM.pem

@@ -20,4 +20,28 @@ module.exports = async (srv) => {
       console.log(error);
     }
   });
+
+
+  srv.on("getUsers", async (req) => {
+    try {
+      let response = await executeHttpRequest(
+        {
+          destinationName: "sfapi",
+        },
+        {
+          method: "get",
+          url: "/odata/v2/User?$top=2",
+        }
+      );
+
+      let data = response.data;
+      console.log("Data: ", data)
+
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+
+    return "OK";
+  });
 };

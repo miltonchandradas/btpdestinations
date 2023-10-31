@@ -1,2 +1,6 @@
-### GET Applications
+### GET Applications - OAuth2 Password Authentication
 GET http://localhost:4004/odata/v4/service/btp/getApplications()
+
+
+### GET Users - Client Certificate Authentication
+GET http://localhost:4004/odata/v4/service/btp/getUsers()
