@@ -1,0 +1,2 @@
+### GET Applications
+GET http://localhost:4004/odata/v4/service/btp/getApplications()

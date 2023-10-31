@@ -1,0 +1,15 @@
+NO AUTHENTICATION
+-----------------------------------------------------------------------------------------------
+curl  'northwind.dest/Products?%24top=2' -H 'accept: application/json'
+
+
+BASIC AUTHENTICATION
+-----------------------------------------------------------------------------------------------
+curl 'ES5.dest/sap/opu/odata/iwbep/GWSAMPLE_BASIC/ProductSet?%24top=2' -H 'accept: application/json'
+
+
+OAUTH2 PASSWORD AUTHENTICATION
+-----------------------------------------------------------------------------------------------
+curl 'https://api.cf.eu10-004.hana.ondemand.com/v2/apps' -X GET -H 'authorization: bearer eY…'
+
+
