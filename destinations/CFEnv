@@ -1,0 +1,15 @@
+#clientSecret=<< Existing password/certificate removed on export >>
+#Password=<< Existing password/certificate removed on export >>
+#
+#Tue Oct 31 03:30:50 UTC 2023
+Type=HTTP
+clientId=cf
+HTML5.DynamicDestination=true
+Authentication=OAuth2Password
+WebIDEUsage=odata_abap,bsp_execute_abap,odata_gen
+Name=CFEnv
+WebIDEEnabled=true
+tokenServiceURL=https\://uaa.cf.eu10-004.hana.ondemand.com/oauth/token
+ProxyType=Internet
+URL=https\://api.cf.eu10-004.hana.ondemand.com
+User=milton.chandradas@sap.com

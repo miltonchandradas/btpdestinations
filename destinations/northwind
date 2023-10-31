@@ -1,0 +1,10 @@
+#
+#Tue Oct 31 03:30:23 UTC 2023
+URL=https\://services.odata.org/V2/(S(wd5zwkiarvfvgybus0l5a3xe))/OData/OData.svc
+Name=northwind
+HTML5.DynamicDestination=true
+ProxyType=Internet
+Type=HTTP
+WebIDEEnabled=true
+WebIDEUsage=odata_abap,bsp_execute_abap,odata_gen
+Authentication=NoAuthentication

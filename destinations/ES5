@@ -1,0 +1,13 @@
+#Password=<< Existing password/certificate removed on export >>
+#
+#Tue Oct 31 03:30:35 UTC 2023
+Description=SAP Gateway Demo System
+Type=HTTP
+HTML5.DynamicDestination=true
+Authentication=BasicAuthentication
+WebIDEUsage=odata_abap,bsp_execute_abap,odata_gen
+Name=ES5
+WebIDEEnabled=true
+ProxyType=Internet
+URL=https\://sapes5.sapdevcenter.com/
+User=i825339
