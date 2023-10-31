@@ -6,7 +6,7 @@ module.exports = async (srv) => {
     try {
       let response = await executeHttpRequest(
         {
-          destinationName: "CFEnv",
+          destinationName: "cfapi",
         },
         {
           method: "get",
