@@ -52,6 +52,8 @@ resources:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
+      service-keys: 
+        - name: btpdestinations-auth-key
       config:
         xsappname: btpdestinations-${org}-${space}
         tenant-mode: dedicated
