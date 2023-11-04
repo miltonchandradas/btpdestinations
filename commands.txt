@@ -17,12 +17,15 @@ curl 'https://api.cf.eu10-004.hana.ondemand.com/v2/apps' -X GET -H 'authorizatio
 CLIENT CERTIFICATE AUTHENTICATION
 -----------------------------------------------------------------------------------------------
 openssl pkcs12 -export -out mysf.p12 -inkey private.pem -in public.pem
-curl 'integrationsuiteapi.dest//http/step1' -X POST -d '{"name": "Milton"}' -H 'Content-Type: application/json' -H 'accept: application/json'
+curl 'sfapi.dest/odata/v2/User?%24top=2' -H 'accept: application/json'
 
 
 CLIENT CREDENTIALS
 -----------------------------------------------------------------------------------------------
+curl 'integrationsuiteapi.dest//http/step1' -X POST -d '{"name": "Milton"}' -H 'Content-Type: application/json' -H 'accept: application/json'
+
 cds bind -2 btpdestinations-dest
+cds bind -2 btpdestinations-auth
 cds watch --profile hybrid
 
 rm mydb.sqlite

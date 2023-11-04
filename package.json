@@ -28,6 +28,14 @@
           "database": "mydb.sqlite"
         }
       },
+      "[hybrid]": {
+        "db": {
+          "kind": "sqlite"
+        },
+        "auth": {
+          "kind": "xsuaa"
+        }
+      },
       "[production]": {
         "db": {
           "kind": "hana-cloud"

@@ -44,7 +44,6 @@ modules:
         - package-lock.json
     requires:
       - name: btpdestinations-db
-      - name: btpdestinations-auth
 
 resources:
   - name: btpdestinations-auth
