@@ -22,8 +22,20 @@
   },
   "cds": {
     "requires": {
-      "db": "hana",
-      "auth": "xsuaa"
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "mydb.sqlite"
+        }
+      },
+      "[production]": {
+        "db": {
+          "kind": "hana-cloud"
+        },
+        "auth": {
+          "kind": "xsuaa"
+        }
+      }
     }
   }
 }

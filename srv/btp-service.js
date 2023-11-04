@@ -2,6 +2,8 @@ const cds = require("@sap/cds");
 const { executeHttpRequest } = require("@sap-cloud-sdk/http-client");
 
 module.exports = async (srv) => {
+  const { Employees } = srv.entities;
+
   srv.on("getApplications", async (req) => {
     try {
       let response = await executeHttpRequest(
@@ -44,4 +46,28 @@ module.exports = async (srv) => {
 
     return "OK";
   });
+
+  srv.on("CREATE", Employees, async (req, next) => {
+    let newEntry = await next();
+    
+    try {
+      let response = await executeHttpRequest(
+        {
+          destinationName: "integrationsuiteapi",
+        },
+        {
+          method: "post",
+          url: "/http/step1",
+          data: newEntry
+        }
+      );
+
+      console.log("Response: ", response.data?.message)
+    } catch (error) {
+      console.log(error);
+    }
+
+    return newEntry;
+
+  })
 };

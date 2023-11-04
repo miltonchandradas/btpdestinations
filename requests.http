@@ -4,3 +4,16 @@ GET http://localhost:4004/odata/v4/service/btp/getApplications()
 
 ### GET Users - Client Certificate Authentication
 GET http://localhost:4004/odata/v4/service/btp/getUsers()
+
+### GET Employees - Client Credentials
+GET http://localhost:4004/odata/v4/service/btp/Employees
+Content-Type: application/json
+
+
+### POST Employees - Client Credentials
+POST http://localhost:4004/odata/v4/service/btp/Employees
+Content-Type: application/json
+
+{
+    "name": "Milton"
+}
