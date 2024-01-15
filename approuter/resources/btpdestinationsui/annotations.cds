@@ -1,1 +1,0 @@
-using BTPService as service from '../../srv/btp-service';
