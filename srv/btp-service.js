@@ -4,6 +4,10 @@ const { executeHttpRequest } = require("@sap-cloud-sdk/http-client");
 module.exports = async (srv) => {
   const { Employees } = srv.entities;
 
+  srv.before("*", async (req) => {
+    if (req.headers?.authorization) console.log(req.headers?.authorization);
+  });
+
   srv.on("getApplications", async (req) => {
     try {
       let response = await executeHttpRequest(
@@ -23,7 +27,6 @@ module.exports = async (srv) => {
     }
   });
 
-
   srv.on("getUsers", async (req) => {
     try {
       let response = await executeHttpRequest(
@@ -37,7 +40,7 @@ module.exports = async (srv) => {
       );
 
       let data = response.data;
-      console.log("Data: ", data)
+      console.log("Data: ", data);
 
       return data;
     } catch (error) {
@@ -49,7 +52,7 @@ module.exports = async (srv) => {
 
   srv.on("CREATE", Employees, async (req, next) => {
     let newEntry = await next();
-    
+
     try {
       let response = await executeHttpRequest(
         {
@@ -58,16 +61,15 @@ module.exports = async (srv) => {
         {
           method: "post",
           url: "/http/step1",
-          data: newEntry
+          data: newEntry,
         }
       );
 
-      console.log("Response: ", response.data?.message)
+      console.log("Response: ", response.data?.message);
     } catch (error) {
       console.log(error);
     }
 
     return newEntry;
-
-  })
+  });
 };

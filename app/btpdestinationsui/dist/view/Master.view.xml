@@ -1,0 +1,22 @@
+<mvc:View controllerName="com.sap.btpdestinationsui.controller.Master"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Table id="masterTable" items="{path: '/Employees'}" class="sapUiMediumMarginTop">
+                <columns>
+                    <Column ><Text text="Name"></Text></Column>
+                    <Column ><Text text="Email"></Text></Column>
+                    <Column ><Text text="Department"></Text></Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <Text text="{name}"></Text>
+                        <Text text="{email}"></Text>
+                        <Text text="{department}"></Text>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "mydb",
+            "database": "${workspaceFolder:btpdestinations}/mydb.sqlite"
+        }
+    ],
+    "SAP HANA Database Artifacts.lastSelectedTargetPath": "/home/user/projects/btpdestinations/db/src"
+}

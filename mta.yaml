@@ -8,7 +8,7 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
-        - npx cds build --production
+        - npx -p @sap/cds-dk cds build --production
 modules:
   - name: btpdestinations-srv
     type: nodejs
@@ -45,6 +45,81 @@ modules:
     requires:
       - name: btpdestinations-db
 
+
+  # ------------------------------------------------------------
+  # BTPDESTINATIONSUI APP MODULE
+  # ------------------------------------------------------------
+  - name: app-btpdestinationsui
+    type: html5
+    path: app/btpdestinationsui
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms: []
+
+  # ------------------------------------------------------------
+  # HTML5 APP REPOSITORY DEPLOYER MODULE
+  # ------------------------------------------------------------
+  - name: ui5-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: ui5-html5repo
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: gen/app
+      requires:
+        - artifacts:
+            - btpdestinationsui-content.zip
+          name: app-btpdestinationsui
+          target-path: gen/app
+
+  # ------------------------------------------------------------
+  # HTML5 APP REPOSITORY DESTINATION CONTENT MODULE
+  # ------------------------------------------------------------
+  - name: app-dest-content
+    type: com.sap.application.content
+    requires:
+      - name: btpdestinations-auth
+        parameters:
+          service-key:
+            name: btpdestinations-auth-key
+      - name: btpdestinations-dest
+        parameters:
+          content-target: true
+      - name: ui5-html5repo
+        parameters:
+          service-key:
+            name: ui5-html5repo-key
+      - name: srv-api
+    parameters:
+      content:
+        instance:
+          existing_destinations_policy: ignore
+          destinations:
+            - Name: app-service-btpdestinations-auth
+              ServiceInstanceName: btpdestinations-auth
+              ServiceKeyName: btpdestinations-auth-key
+              Authentication: OAuth2UserTokenExchange
+              sap.cloud.service: app-btpdestinations-service
+            - Name: app-service-ui5-html5repo
+              ServiceInstanceName: ui5-html5repo
+              ServiceKeyName: ui5-html5repo-key
+              sap.cloud.service: app-btpdestinations-service
+            - Name: btpdestinations-srv
+              Description: App - Server Module
+              URL: ~{srv-api/srv-url}
+              TokenServiceInstanceName: btpdestinations-auth
+              TokenServiceKeyName: btpdestinations-auth-key
+              Authentication: OAuth2UserTokenExchange
+              sap.cloud.service: app-btpdestinations-service
+    build-parameters:
+      no-source: true
+
 resources:
   - name: btpdestinations-auth
     type: org.cloudfoundry.managed-service
@@ -57,11 +132,19 @@ resources:
       config:
         xsappname: btpdestinations-${org}-${space}
         tenant-mode: dedicated
+        role-collections:
+          - name: 'DestinationsManager-${space}'
+            description: Destinations Manager
+            role-template-references:
+            - $XSAPPNAME.DestinationsManager
+
   - name: btpdestinations-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
       service-plan: hdi-shared
+
+
   - name: btpdestinations-dest
     type: org.cloudfoundry.managed-service
     requires:
@@ -71,3 +154,13 @@ resources:
       service-plan: lite
       service-keys: 
         - name: btpdestinations-dest-key
+      config:
+        HTML5Runtime_enabled: true
+
+  # ----------- HTML5 APP REPOSITORY HOSTING SERVICE -----------
+  - name: ui5-html5repo
+  # ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host

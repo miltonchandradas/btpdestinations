@@ -1,0 +1,19 @@
+{
+    "xsappname": "btpdestinationsui-uxmobilena-i825339",
+    "tenant-mode": "dedicated",
+    "scopes": [],
+    "attributes": [],
+    "role-templates": [],
+    "oauth2-configuration": {
+      "token-validity": 3600,
+      "redirect-uris": [
+        "http://localhost:5000/**",
+        "http://localhost:4004/**",
+        "https://*.*.applicationstudio.cloud.sap/**",
+        "https://*.cfapps.*.hana.ondemand.com/**",
+        "https://*.authentication.*.hana.ondemand.com/**",
+        "https://oauth.pstmn.io/v1/callback"
+      ]
+    }
+  }
+  

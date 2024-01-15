@@ -1,0 +1,22 @@
+{
+    "welcomeFile": "/app/btpdestinationsui/webapp/index.html",
+    "authenticationMethod": "route",
+    "sessionTimeout": 30,
+    "logout": {
+      "logoutEndpoint": "/do/logout",
+      "logoutPage": "/"
+    },
+    "routes": [
+      {
+        "source": "^/app/(.*)$",
+        "target": "$1",
+        "localDir": "resources",
+        "authenticationType": "xsuaa"
+      },
+      {
+        "source": "^/odata/v4/service/(.*)$",
+        "destination": "srv-binding",
+        "authenticationType": "xsuaa"
+      }
+    ]
+  }

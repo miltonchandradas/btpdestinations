@@ -1,9 +1,23 @@
 {
   "xsappname": "btpdestinations-uxmobilena-i825339",
   "tenant-mode": "dedicated",
-  "scopes": [],
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.DestinationsManager",
+      "description": "Destinations Manager"
+    }
+  ],
   "attributes": [],
-  "role-templates": [],
+  "role-templates": [
+    {
+      "name": "DestinationsManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.DestinationsManager"
+      ],
+      "attribute-references": []
+    }
+  ],
   "oauth2-configuration": {
     "token-validity": 3600,
     "redirect-uris": [
