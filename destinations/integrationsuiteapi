@@ -1,0 +1,14 @@
+#clientSecret=<< Existing password/certificate removed on export >>
+#
+#Wed Aug 21 17:05:33 UTC 2024
+Type=HTTP
+clientId=sb-a09f62fe-4eb8-49e3-85f5-71cf3564f49d\!b156804|it-rt-integration-e7p45h3d\!b55215
+HTML5.DynamicDestination=true
+Authentication=OAuth2ClientCredentials
+WebIDEUsage=odata_abap,bsp_execute_abap,odata_gen
+Name=integrationsuiteapi
+WebIDEEnabled=true
+tokenServiceURL=https\://integration-e7p45h3d.authentication.us10.hana.ondemand.com/oauth/token
+ProxyType=Internet
+URL=https\://integration-e7p45h3d.it-cpitrial06-rt.cfapps.us10-001.hana.ondemand.com
+tokenServiceURLType=Dedicated
